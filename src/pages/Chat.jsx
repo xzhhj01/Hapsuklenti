@@ -50,7 +50,7 @@ function Chat() {
         <div className="profile" onClick={() => navigate("/")} style={{cursor: "pointer"}}>
           <span role="img" aria-label="profile">🥳</span>
         </div>
-        <div className="title">실시간 현장 반응</div>
+        <div className="title">실시간 채팅</div>
       </header>
 
       {/* 메시지 리스트 */}
@@ -78,15 +78,15 @@ function Chat() {
 
       {/* 네비게이션 */}
       <nav className="bottom-nav">
-        <button className="nav-btn" onClick={() => navigate("/matching")}>
+        <button className="nav-btn active">
+          <span role="img" aria-label="실시간 채팅">📋</span>
+          실시간 채팅
+        </button>
+        <button className="nav-btn" onClick={() => navigate('/matching')}>
           <span role="img" aria-label="합석">💙</span>
           합석
         </button>
-        <button className="nav-btn active">
-          <span role="img" aria-label="실시간 현장">📋</span>
-          실시간 현장
-        </button>
-        <button className="nav-btn" onClick={() => navigate("/photo")}>
+        <button className="nav-btn" onClick={() => navigate('/photo')}>
           <span role="img" aria-label="사진">📷</span>
           사진
         </button>

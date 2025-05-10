@@ -25,11 +25,14 @@ function Home() {
 
       {/* 🔵 버튼 */}
       <div className="buttons-container">
+        <Link to="/chat">
+          <button className="button">실시간 소식 듣기</button>
+        </Link>
         <Link to="/matching">
           <button className="button">합석 구하러 가기</button>
         </Link>
-        <Link to="/chat">
-          <button className="button">실시간 현장 확인하기</button>
+        <Link to="/photo">
+          <button className="button">실시간 사진 보기</button>
         </Link>
       </div>
 
