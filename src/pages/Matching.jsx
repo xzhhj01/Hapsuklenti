@@ -103,7 +103,7 @@ export default function Matching() {
           <span role="img" aria-label="합석">💙</span>
           합석
         </button>
-        <button className="nav-btn" onClick={() => navigate(`/matching/detail/${post.id}`)}>
+        <button className="nav-btn" onClick={() => navigate("/chat")}>
           <span role="img" aria-label="실시간 현장">📋</span>
           실시간 현장
         </button>
