@@ -2,17 +2,13 @@ import React, { useEffect, useState } from "react";
 import { db } from "../lib/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import "./Detail.css";
-import { useNavigate } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 
-function useQuery() {
-  return new URLSearchParams(useLocation().search);
-}
 
 export default function Detail() {
-  const query = useQuery();
-  const id = query.get("id");
+  const { id } = useParams();
   const [post, setPost] = useState(null);
-  const navigate = useNavigate();
+  const [password, setPassword] = useState('');
 
   useEffect(() => {
     if (!id) return;
