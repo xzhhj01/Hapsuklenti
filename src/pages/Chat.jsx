@@ -73,7 +73,7 @@ function Chat() {
           onChange={e => setInput(e.target.value)}
           placeholder="메시지를 입력하세요"
         />
-        <button type="submit">🡡</button>
+        <button type="submit">↑</button>
       </form>
 
       {/* 네비게이션 */}
