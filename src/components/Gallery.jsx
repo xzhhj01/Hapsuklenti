@@ -6,6 +6,7 @@ const Gallery = forwardRef((props, ref) => {
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [modalPhoto, setModalPhoto] = useState(null); // 모달 상태
 
   // 외부에서 접근 가능한 함수 정의
   useImperativeHandle(ref, () => ({
@@ -36,6 +37,9 @@ const Gallery = forwardRef((props, ref) => {
     fetchPhotos();
   };
 
+  // 모달 닫기
+  const closeModal = () => setModalPhoto(null);
+
   return (
     <div className="gallery-container">
       <div className="gallery-header">
@@ -54,7 +58,7 @@ const Gallery = forwardRef((props, ref) => {
       ) : (
         <div className="photo-grid">
           {photos.map((photo) => (
-            <div key={photo.id} className="photo-item">
+            <div key={photo.id} className="photo-item" onClick={() => setModalPhoto(photo)}>
               <img src={photo.imageUrl} alt="업로드된 사진" />
               <div className="photo-tags">
                 {photo.tag1 && <span className="tag">{photo.tag1}</span>}
@@ -70,6 +74,21 @@ const Gallery = forwardRef((props, ref) => {
               </div>
             </div>
           ))}
+        </div>
+      )}
+
+      {/* 사진 클릭 시 모달 */}
+      {modalPhoto && (
+        <div className="photo-modal-overlay" onClick={closeModal}>
+          <div className="photo-modal" onClick={e => e.stopPropagation()}>
+            <button className="photo-modal-close" onClick={closeModal}>×</button>
+            <img src={modalPhoto.imageUrl} alt="확대 사진" className="photo-modal-img" />
+            <div className="photo-modal-tags">
+              {modalPhoto.tag1 && <span className="tag">{modalPhoto.tag1}</span>}
+              {modalPhoto.tag2 && <span className="tag">{modalPhoto.tag2}</span>}
+              {modalPhoto.tag3 && <span className="tag">{modalPhoto.tag3}</span>}
+            </div>
+          </div>
         </div>
       )}
     </div>
