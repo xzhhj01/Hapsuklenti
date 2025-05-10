@@ -176,6 +176,46 @@ html, body {
   font-weight: 700;
 }
 
+.detail-edit-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 18px 16px 0 16px;
+}
+
+.detail-edit-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  background: #f7f7f7;
+  color: #3b82f6;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.detail-edit-btn:hover {
+  background: #e6eefe;
+}
+
+@media (max-width: 500px) {
+  .detail-edit-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    margin: 18px 8px 0 8px;
+  }
+  .detail-edit-btn {
+    width: 100%;
+    margin-top: 6px;
+    justify-content: center;
+  }
+}
+
 
 
 
