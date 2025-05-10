@@ -2,7 +2,8 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, query, orderBy, limit, getDocs } from "firebase/firestore";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -21,9 +22,19 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 
+// Analytics may not work in development environment
+let analytics;
+try {
+  analytics = getAnalytics(app);
+} catch (error) {
+  console.log("Analytics failed to initialize:", error);
+}
+
+// Initialize Firestore and Storage
 export const db = getFirestore(app);
+export const storage = getStorage(app);
+
 // Firestore에 새 게시글 추가
 export const addPost = async (title,
     mygender,
@@ -67,3 +78,61 @@ if (!storedUserId) {
       console.error("Firestore에 게시글 추가 중 오류 발생:", error);
     }
   };
+
+// 사진 업로드 및 photo 컬렉션에 문서 추가
+export const addPhoto = async (file, tags) => {
+  try {
+    // 파일을 Base64로 변환하는 함수
+    const toBase64 = file => new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = error => reject(error);
+    });
+
+    // 파일을 Base64로 변환
+    console.log("파일을 Base64로 변환 중...");
+    const base64Image = await toBase64(file);
+    console.log("Base64 변환 완료");
+    
+    // Firestore에 직접 Base64 이미지 저장
+    console.log("Firestore에 저장 중...");
+    const docRef = await addDoc(collection(db, "photo"), {
+      imageData: base64Image,  // 이미지를 Base64로 저장
+      uploadedAt: new Date(),
+      tag1: tags.tag1 || "",
+      tag2: tags.tag2 || "",
+      tag3: tags.tag3 || ""
+    });
+    console.log("Firestore에 저장 완료:", docRef.id);
+    
+    return {
+      id: docRef.id,
+      imageUrl: base64Image  // Base64 문자열 반환
+    };
+  } catch (error) {
+    console.error("사진 업로드 중 상세 오류:", error);
+    throw error;
+  }
+};
+
+// 모든 사진 가져오기 (최신순)
+export const getAllPhotos = async (limitCount = 20) => {
+  try {
+    const photosRef = collection(db, "photo");
+    const q = query(photosRef, orderBy("uploadedAt", "desc"), limit(limitCount));
+    const querySnapshot = await getDocs(q);
+    
+    return querySnapshot.docs.map(doc => {
+      const data = doc.data();
+      return {
+        id: doc.id,
+        imageUrl: data.imageData, // Base64 데이터를 imageUrl로 매핑
+        ...data
+      };
+    });
+  } catch (error) {
+    console.error("사진 목록 가져오기 중 오류 발생:", error);
+    return [];
+  }
+};

@@ -4,6 +4,7 @@ import Chat from './pages/Chat';
 import Detail from './pages/Detail';
 import Matching from './pages/Matching';
 import Writing from './pages/Writing';
+import Photo from './pages/Photo';
 import './App.css';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/matching" element={<Matching />} />
         <Route path="/matching/writing" element={<Writing />} />
         <Route path="/matching/detail/:id" element={<Detail />} />
+        <Route path="/photo" element={<Photo />} />
       </Routes>
     </BrowserRouter>
   );

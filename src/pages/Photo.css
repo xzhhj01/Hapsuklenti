@@ -1,0 +1,231 @@
+.photo-container {
+  max-width: 400px;
+  margin: 0 auto;
+  background: #fff;
+  min-height: 100vh;
+  font-family: 'Pretendard', sans-serif;
+  position: relative;
+  padding-bottom: 70px;
+  overflow-y: auto;
+}
+
+.photo-header {
+  display: flex;
+  align-items: center;
+  padding: 18px 16px 8px 16px;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.profile {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f3f3f3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin-right: 10px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  flex: 1;
+}
+
+/* 업로드 섹션 스타일 */
+.upload-section {
+  padding: 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.upload-section h2 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.file-input-container {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 10px;
+}
+
+.file-input-label {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: relative;
+  cursor: pointer;
+  border: 2px dashed #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.upload-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 20px;
+  color: #aaa;
+}
+
+.upload-placeholder span {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.file-input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+.image-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tags-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tag-input {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.tag-input label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+}
+
+.tag-input input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  font-size: 14px;
+  background: #f7f7f7;
+}
+
+.upload-button {
+  width: 100%;
+  padding: 12px 0;
+  border-radius: 10px;
+  border: none;
+  background: #f7d6d6;
+  color: #7d2e2e;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 5px;
+}
+
+.upload-button:hover {
+  background: #e6bebe;
+}
+
+.upload-button:disabled {
+  background: #e0e0e0;
+  color: #888;
+  cursor: not-allowed;
+}
+
+.status-message {
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.status-message.error {
+  background-color: #ffe6e6;
+  color: #d32f2f;
+}
+
+.status-message.success {
+  background-color: #e6f7e6;
+  color: #2e7d32;
+}
+
+/* 사진 갤러리 스타일 */
+.photos-gallery {
+  padding: 20px 16px;
+}
+
+.photos-gallery h2 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.photo-item {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  position: relative;
+}
+
+.photo-item img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.photo-tags {
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.tag {
+  padding: 2px 8px;
+  background: #f0f0f0;
+  font-size: 12px;
+  border-radius: 4px;
+  color: #555;
+  font-weight: 500;
+}
+
+.photo-date {
+  padding: 0 10px 10px;
+  font-size: 11px;
+  color: #999;
+}
+
+.loading, .no-photos {
+  text-align: center;
+  padding: 30px 0;
+  color: #888;
+  font-size: 15px;
+} 
