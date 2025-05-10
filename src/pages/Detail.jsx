@@ -46,13 +46,19 @@ export default function Detail() {
     setPost({ ...post, title: editTitle, content: editContent });
     setEditMode(false);
     alert("수정이 완료되었습니다.");
+    navigate("/matching");
   };
 
   if (!post) return <div>로딩중...</div>;
 
   return (
     <div className="detail-wrap">
-      {/* ...헤더 등 생략... */}
+      <header className="detail-header">
+        <div className="profile" onClick={() => navigate("/") } style={{cursor: "pointer"}}>
+          <span role="img" aria-label="profile">🥳</span>
+        </div>
+        <div className="title" onClick={() => navigate("/") } style={{cursor: "pointer"}}>합석렌티</div>
+      </header>
       <div className="detail-card">
         {editMode ? (
           <>
