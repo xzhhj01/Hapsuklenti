@@ -1,3 +1,9 @@
+/* 스크롤 관련 스타일 */
+html, body {
+  height: 100%;
+  overflow-y: auto;
+}
+
 .writing-wrap {
   max-width: 400px;
   margin: 0 auto;
@@ -6,6 +12,7 @@
   font-family: 'Pretendard', sans-serif;
   position: relative;
   padding-bottom: 70px;
+  overflow-y: auto;
 }
 
 .writing-header {
@@ -55,8 +62,8 @@
 
 .textarea {
   width: 100%;
-  min-height: 90px;
-  padding: 12px 14px;
+  min-height: 240px;
+  padding: 14px 16px;
   border-radius: 10px;
   border: 1px solid #e0e0e0;
   font-size: 15px;
@@ -66,24 +73,26 @@
 
 .gender-row {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: 6px 10px;
+  gap: 8px;
+  flex-wrap: nowrap;
 }
 
 .gender-label {
   font-size: 14px;
   font-weight: 500;
   margin-right: 4px;
+  white-space: nowrap;
 }
 
 .gender-btns {
   display: flex;
   gap: 4px;
+  flex-wrap: nowrap;
 }
 
 .gender-btn {
-  padding: 4px 10px;
+  padding: 6px 12px;
   border-radius: 8px;
   border: 1px solid #e0e0e0;
   background: #f7f7f7;
@@ -103,13 +112,13 @@
 .select-row {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   font-size: 15px;
 }
 
 .select-row select {
   flex: 1;
-  padding: 7px 10px;
+  padding: 9px 12px;
   border-radius: 7px;
   border: 1px solid #e0e0e0;
   background: #f7f7f7;
@@ -118,14 +127,14 @@
 
 .submit-btn {
   width: 100%;
-  padding: 12px 0;
+  padding: 14px 0;
   border-radius: 10px;
   border: none;
   background: #f7d6d6;
   color: #7d2e2e;
   font-size: 17px;
   font-weight: 700;
-  margin-top: 6px;
+  margin-top: 10px;
   cursor: pointer;
   transition: background 0.2s;
 }
@@ -166,3 +175,7 @@
   color: #3b82f6;
   font-weight: 700;
 }
+
+
+
+
