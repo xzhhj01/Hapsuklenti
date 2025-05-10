@@ -2,11 +2,13 @@ import React, { useEffect, useState, useRef } from "react";
 import "./chat.css";
 import { db } from "../lib/firebase";
 import { collection, addDoc, serverTimestamp, query, orderBy, onSnapshot } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 function Chat() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const messagesEndRef = useRef(null);
+  const navigate = useNavigate();
 
   // 브라우저 고유 ID
   let userId = localStorage.getItem('userId');
@@ -43,10 +45,15 @@ function Chat() {
 
   return (
     <div className="chat-container">
-      {/* 1. 제목 */}
-      <h2>실시간 현장 반응</h2>
+      {/* matching-header 스타일의 상단바 */}
+      <header className="matching-header">
+        <div className="profile" onClick={() => navigate("/")} style={{cursor: "pointer"}}>
+          <span role="img" aria-label="profile">🥳</span>
+        </div>
+        <div className="title">실시간 현장 반응</div>
+      </header>
 
-      {/* 2. 메시지 리스트 */}
+      {/* 메시지 리스트 */}
       <div className="messages">
         {messages.map(msg => (
           <div
@@ -59,7 +66,7 @@ function Chat() {
         <div ref={messagesEndRef} />
       </div>
 
-      {/* 3. 입력창 */}
+      {/* 입력창 */}
       <form onSubmit={sendMessage} className="input-form">
         <input
           value={input}
@@ -69,10 +76,16 @@ function Chat() {
         <button type="submit">전송</button>
       </form>
 
-      {/* 4. 네비게이션 */}
+      {/* 네비게이션 */}
       <nav className="bottom-nav">
-        <button>합석</button>
-        <button className="active">실시간 현장</button>
+        <button className="nav-btn" onClick={() => navigate('/matching')}>
+          <span role="img" aria-label="합석">💙</span>
+          합석
+        </button>
+        <button className="nav-btn active">
+          <span role="img" aria-label="실시간 현장">📋</span>
+          실시간 현장
+        </button>
       </nav>
     </div>
   );
