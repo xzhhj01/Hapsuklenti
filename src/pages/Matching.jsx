@@ -28,10 +28,10 @@ export default function Matching() {
   return (
     <div className="matching-container">
       <header className="matching-header">
-        <div className="profile">
+        <div className="profile" onClick={() => navigate("/") } style={{cursor: "pointer"}}>
           <span role="img" aria-label="profile">🥳</span>
         </div>
-        <div className="title">합석렌티</div>
+        <div className="title" onClick={() => navigate("/") } style={{cursor: "pointer"}}>합석렌티</div>
         <button className="edit-btn" onClick={() => navigate("/matching/writing")}>✏️</button>
       </header>
       <div className="search-bar">
