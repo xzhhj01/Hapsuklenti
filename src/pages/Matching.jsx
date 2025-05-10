@@ -80,7 +80,7 @@ export default function Matching() {
             <li
               key={post.id}
               className="post-item"
-              onClick={() => navigate(`/detail/${post.id}`)}
+              onClick={() => navigate(`/matching/detail/${post.id}`)}
               style={{ cursor: "pointer" }}
             >
               <div className="post-title">{post.title}</div>
