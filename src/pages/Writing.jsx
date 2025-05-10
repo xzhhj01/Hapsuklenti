@@ -37,7 +37,7 @@ export default function Writing() {
   return (
     <div className="writing-wrap">
       <header className="writing-header">
-        <div className="profile">
+        <div className="profile" onClick={() => navigate("/") } style={{cursor: "pointer"}}>
           <span role="img" aria-label="profile">🥳</span>
         </div>
         <div className="title">합석렌티</div>
