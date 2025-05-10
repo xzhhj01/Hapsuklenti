@@ -104,7 +104,7 @@ export default function Matching() {
           실시간 채팅
         </button>
         <button className="nav-btn active">
-          <span role="img" aria-label="합석">💙</span>
+          <span role="img" aria-label="합석">💘</span>
           합석
         </button>
         <button className="nav-btn" onClick={() => navigate('/photo')}>
