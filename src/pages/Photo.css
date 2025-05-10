@@ -7,12 +7,13 @@
   position: relative;
   padding-bottom: 70px;
   overflow-y: auto;
+  padding-top: env(safe-area-inset-top, 0px);
 }
 
 .photo-header {
   display: flex;
   align-items: center;
-  padding: 18px 16px 8px 16px;
+  padding: calc(18px + env(safe-area-inset-top, 0px)) 16px 8px 16px;
   background: #fff;
   position: sticky;
   top: 0;
