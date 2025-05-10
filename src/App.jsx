@@ -14,7 +14,7 @@ function App() {
         <Route path="/chat" element={<Chat />} />
         <Route path="/matching" element={<Matching />} />
         <Route path="/matching/writing" element={<Writing />} />
-        <Route path="/matching/detail" element={<Detail />} />
+        <Route path="/matching/detail/:id" element={<Detail />} />
       </Routes>
     </BrowserRouter>
   );

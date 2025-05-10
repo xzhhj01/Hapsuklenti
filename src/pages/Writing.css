@@ -1,0 +1,168 @@
+.writing-wrap {
+  max-width: 400px;
+  margin: 0 auto;
+  background: #fff;
+  min-height: 100vh;
+  font-family: 'Pretendard', sans-serif;
+  position: relative;
+  padding-bottom: 70px;
+}
+
+.writing-header {
+  display: flex;
+  align-items: center;
+  padding: 18px 16px 8px 16px;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.profile {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f3f3f3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin-right: 10px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  flex: 1;
+}
+
+.writing-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 0 16px;
+  margin-top: 10px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  font-size: 15px;
+  background: #f7f7f7;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 90px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  font-size: 15px;
+  background: #f7f7f7;
+  resize: vertical;
+}
+
+.gender-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+}
+
+.gender-label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 4px;
+}
+
+.gender-btns {
+  display: flex;
+  gap: 4px;
+}
+
+.gender-btn {
+  padding: 4px 10px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  background: #f7f7f7;
+  color: #6c6c6c;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.gender-btn.selected {
+  background: #f7d6d6;
+  color: #7d2e2e;
+  border: 1.5px solid #e6bebe;
+  font-weight: 600;
+}
+
+.select-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+}
+
+.select-row select {
+  flex: 1;
+  padding: 7px 10px;
+  border-radius: 7px;
+  border: 1px solid #e0e0e0;
+  background: #f7f7f7;
+  font-size: 14px;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px 0;
+  border-radius: 10px;
+  border: none;
+  background: #f7d6d6;
+  color: #7d2e2e;
+  font-size: 17px;
+  font-weight: 700;
+  margin-top: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.submit-btn:hover {
+  background: #e6bebe;
+}
+
+.bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-width: 400px;
+  margin: 0 auto;
+  background: #fff;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 0;
+  z-index: 20;
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #888;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  flex: 1;
+  cursor: pointer;
+}
+
+.nav-btn.active {
+  color: #3b82f6;
+  font-weight: 700;
+}
