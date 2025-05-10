@@ -11,6 +11,7 @@
   border-right: 1px solid #eee;
   position: relative;
   padding-bottom: 70px;
+  padding-top: env(safe-area-inset-top, 0px);
 }
 
 h2 {
@@ -175,4 +176,35 @@ h2 {
   .bottom-nav {
     max-width: 100vw;
   }
+}
+
+.matching-header {
+  display: flex;
+  align-items: center;
+  padding: calc(18px + env(safe-area-inset-top, 0px)) 16px 8px 16px;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.chat-date {
+  font-size: 13px;
+  color: #b0b0b0;
+  margin: 4px 0 0 0;
+  font-style: italic;
+  width: 100%;
+  max-width: 80%;
+}
+
+.my-date {
+  text-align: right;
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.other-date {
+  text-align: left;
+  margin-left: 0;
+  margin-right: auto;
 }

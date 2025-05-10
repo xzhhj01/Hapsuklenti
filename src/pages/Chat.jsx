@@ -55,14 +55,38 @@ function Chat() {
 
       {/* 메시지 리스트 */}
       <div className="messages">
-        {messages.map(msg => (
-          <div
-            key={msg.id}
-            className={msg.userId === userId ? "my-message" : "other-message"}
-          >
-            {msg.text}
-          </div>
-        ))}
+        {messages.map(msg => {
+          let dateStr = "";
+          if (msg.createdAt) {
+            let dateObj;
+            if (msg.createdAt.toDate) {
+              dateObj = msg.createdAt.toDate();
+            } else if (msg.createdAt.seconds) {
+              dateObj = new Date(msg.createdAt.seconds * 1000);
+            }
+            if (dateObj) {
+              // MM/DD HH:mm 형식
+              const mm = String(dateObj.getMonth() + 1).padStart(2, '0');
+              const dd = String(dateObj.getDate()).padStart(2, '0');
+              const hh = String(dateObj.getHours()).padStart(2, '0');
+              const min = String(dateObj.getMinutes()).padStart(2, '0');
+              dateStr = `${mm}/${dd} ${hh}:${min}`;
+            }
+          }
+          const isMine = msg.userId === userId;
+          return (
+            <div key={msg.id} style={{ display: 'flex', flexDirection: 'column', alignItems: isMine ? 'flex-end' : 'flex-start', marginBottom: 12 }}>
+              <div className={isMine ? "my-message" : "other-message"}>
+                {msg.text}
+              </div>
+              {dateStr && (
+                <div className={isMine ? "chat-date my-date" : "chat-date other-date"}>
+                  <em>{dateStr}</em>
+                </div>
+              )}
+            </div>
+          );
+        })}
         <div ref={messagesEndRef} />
       </div>
 
@@ -83,7 +107,7 @@ function Chat() {
           실시간 채팅
         </button>
         <button className="nav-btn" onClick={() => navigate('/matching')}>
-          <span role="img" aria-label="합석">💙</span>
+          <span role="img" aria-label="합석">💘</span>
           합석
         </button>
         <button className="nav-btn" onClick={() => navigate('/photo')}>

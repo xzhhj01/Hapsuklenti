@@ -6,12 +6,13 @@
     font-family: 'Pretendard', sans-serif;
     position: relative;
     padding-bottom: 70px;
+    padding-top: env(safe-area-inset-top, 0px);
   }
   
   .matching-header {
     display: flex;
     align-items: center;
-    padding: 18px 16px 8px 16px;
+    padding: calc(18px + env(safe-area-inset-top, 0px)) 16px 8px 16px;
     background: #fff;
     position: sticky;
     top: 0;
