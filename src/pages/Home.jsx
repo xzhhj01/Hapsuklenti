@@ -9,6 +9,7 @@ function Home() {
         <br />
         <Link to="/matching">게시판</Link>
         <br />
+        <Link to="/chat">실시간 현장</Link>
         <br />
         
       </nav>
