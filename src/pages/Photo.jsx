@@ -4,6 +4,52 @@ import { useNavigate } from "react-router-dom";
 import Gallery from "../components/Gallery";
 import "./Photo.css";
 
+// 이미지 압축 함수
+function compressImage(file, maxSizeMB = 1, maxWidth = 1200) {
+  return new Promise((resolve, reject) => {
+    const img = new window.Image();
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      img.src = e.target.result;
+    };
+    img.onload = () => {
+      // 비율 유지하며 리사이즈
+      let width = img.width;
+      let height = img.height;
+      if (width > maxWidth) {
+        height = Math.round((height * maxWidth) / width);
+        width = maxWidth;
+      }
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0, width, height);
+
+      // 반복적으로 품질 낮추며 1MB 이하로
+      let quality = 0.92;
+      function tryCompress() {
+        canvas.toBlob(
+          (blob) => {
+            if (blob.size <= maxSizeMB * 1024 * 1024 || quality < 0.5) {
+              resolve(blob);
+            } else {
+              quality -= 0.07;
+              tryCompress();
+            }
+          },
+          "image/jpeg",
+          quality
+        );
+      }
+      tryCompress();
+    };
+    reader.onerror = reject;
+    img.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
 export default function Photo() {
   const [file, setFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
@@ -14,26 +60,34 @@ export default function Photo() {
   const galleryRef = useRef();
 
   // 파일 선택 핸들러
-  const handleFileChange = (e) => {
+  const handleFileChange = async (e) => {
     const selectedFile = e.target.files[0];
     if (selectedFile) {
-      // 파일 크기 검사 (1MB 미만으로 제한)
+      let fileToUpload = selectedFile;
       if (selectedFile.size > 1024 * 1024) {
-        setUploadStatus({
-          status: "error",
-          message: "파일 크기는 1MB 미만이어야 합니다."
-        });
-        return;
+        // 1MB 초과 시 자동 압축
+        try {
+          fileToUpload = await compressImage(selectedFile, 1, 1200);
+          setUploadStatus({
+            status: "info",
+            message: "이미지가 자동으로 1MB 이하로 압축되었습니다."
+          });
+        } catch (err) {
+          setUploadStatus({
+            status: "error",
+            message: "이미지 압축에 실패했습니다."
+          });
+          return;
+        }
       }
-      
-      setFile(selectedFile);
+      setFile(fileToUpload);
       
       // 미리보기 URL 생성
       const fileReader = new FileReader();
       fileReader.onloadend = () => {
         setPreviewUrl(fileReader.result);
       };
-      fileReader.readAsDataURL(selectedFile);
+      fileReader.readAsDataURL(fileToUpload);
     }
   };
 
