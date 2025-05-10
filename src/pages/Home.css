@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.background-shapes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.85;
+}
+
+.circle-1 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background-color: rgba(125, 46, 46, 0.9);
+  top: -50px;
+  left: -50px;
+  filter: blur(5px);
+}
+
+.circle-2 {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: rgba(125, 46, 46, 0.85);
+  bottom: 50px;
+  right: 50px;
+  filter: blur(3px);
+}
+
+.blob {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+  background-color: rgba(247, 214, 214, 0.8);
+  top: 30%;
+  right: -100px;
+  z-index: -1;
+  filter: blur(5px);
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  max-width: 420px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.logo-container {
+  margin-bottom: 40px;
+  text-align: center;
+  position: relative;
+  padding: 1.5rem;
+}
+
+.logo-background {
+  position: absolute;
+  width: 130%;
+  height: 130%;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 24px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  box-shadow: 0 8px 32px rgba(125, 46, 46, 0.15);
+}
+
+.logo-text {
+  font-size: 42px;
+  font-weight: 900;
+  color: transparent;
+  margin-bottom: 16px;
+  text-align: center;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, #7D2E2E 20%, #c25959 80%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  display: inline-block;
+  position: relative;
+  filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.15));
+}
+
+.logo-text::after {
+  content: '합석렌티';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  z-index: -1;
+  color: rgba(125, 46, 46, 0.15);
+  filter: blur(4px);
+}
+
+.logo-emoji {
+  display: inline-block;
+  font-size: 42px;
+  margin-left: 5px;
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.2));
+  transform-origin: center;
+
+  font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;
+  background: none;
+  color: inherit;
+  color: #7D2E2E;
+}
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-5px) rotate(5deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+.welcome-text {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.welcome-heart {
+  color: #7D2E2E;
+  font-size: 22px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.buttons-container {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.button {
+  width: 100%;
+  padding: 18px;
+  margin-bottom: 18px;
+  border: none;
+  border-radius: 14px;
+  background-color: #F7D6D6;
+  color: #333;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(125, 46, 46, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transition: left 0.7s ease;
+}
+
+.button:hover {
+  background-color: #e6bebe;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(125, 46, 46, 0.25);
+}
+
+.button:hover:before {
+  left: 100%;
+}
+
+.button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(125, 46, 46, 0.2);
+}
+
+.copyright {
+  margin-top: 60px;
+  text-align: center;
+  font-size: 14px;
+  color: #888;
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    padding: 16px;
+  }
+
+  .logo-text {
+    font-size: 36px;
+  }
+
+  .logo-emoji {
+    font-size: 36px;
+  }
+
+  .welcome-text {
+    font-size: 18px;
+  }
+
+  .button {
+    padding: 16px;
+    font-size: 16px;
+  }
+}
