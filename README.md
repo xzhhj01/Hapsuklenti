@@ -1,73 +1,93 @@
-# 합석렌티
-합석렌티의 레포지토리입니다.
-<br>
-<img src="./src/assets/readme1.png" width="500">
-<br>
+# 🎉 합석렌티
 
+합석렌티의 레포지토리입니다.  
+입실렌티 축제를 더욱 즐겁게 만들어 줄 동행 매칭 & 실시간 소통 앱입니다.
 
-## :triangular_flag_on_post: 프로젝트 소개 : 합석렌티
-### 서비스 소개
-합석렌티는 입실렌티에서 실시간 만남을 추구할 수 있는 앱입니다.
-### 주요 기능
+<br/>
 
-- **실시간 채팅** : 실시간 채팅을 통한 현재 반응 확인 가능
-- **합석** : 게시글 작성을 통한 합석 가능
-- **사진** : 축제를 즐기는 모습 기록과 공유 가능
-<br>
+<p align="center">
+  <img src="./src/assets/readme1.png" width="500">
+</p>
 
+---
 
-## :scroll: 목차
-1. [프로젝트 개요](#프로젝트-개요)
-2. [팀원 구성](#팀원-구성)
-3. [기능 소개](#기능-소개)
-<br>
+## 🚩 프로젝트 소개 : 합석렌티
 
-## :orange_book: 프로젝트 개요
-### 합석렌티 소개
-합석렌티는 축제를 더 풍성하게 즐길 수 있도록 돕는 축제 동행 매칭 및 소통 플랫폼입니다.
+### 🧾 서비스 개요  
+합석렌티는 입실렌티에서 **실시간 만남과 소통**을 지원하는 앱입니다.  
+혼자 온 참가자들도 함께 어울리며 축제를 더욱 풍성하게 즐길 수 있도록 돕습니다.
 
-축제에 혼자 가는 것이 망설여졌던 사람들, 새로운 사람들과 어울리며 추억을 만들고 싶은 사람들을 위해 실시간 소통, 합석 모집, 사진 공유 기능을 제공합니다.
+### 🛠 주요 기능  
+- **실시간 채팅** : 축제 현장에서 실시간 반응 공유 및 소통  
+- **합석 모집** : 게시글로 동행자 찾기  
+- **사진 공유** : 축제의 순간을 기록하고 나누는 갤러리  
 
-실시간 채팅
-축제 현장의 반응을 즉시 확인하고, 같은 공간에 있는 사람들과 실시간으로 소통할 수 있어 축제의 몰입감을 높입니다.
+---
 
-합석 기능
-자유롭게 게시글을 작성하여 함께 즐길 동행자를 모집할 수 있습니다. 목적에 따라 그룹을 만들고, 관심사 기반으로 새로운 인연을 만날 수 있습니다.
+## 📑 목차  
+1. [프로젝트 개요](#orange_book-프로젝트-개요)  
+2. [팀원 구성](#four_leaf_clover-팀원-구성)  
+3. [기능 소개](#-기능-소개)
 
-사진 공유
-축제에서의 소중한 순간을 사진으로 남기고 공유할 수 있어, 단순한 기록을 넘어 모두와 함께하는 추억으로 확장됩니다.
+---
 
-합석렌티는 단순한 채팅 앱이 아닙니다. 사람과 사람이 이어지고, 낯선 공간이 특별한 경험으로 바뀌는 그 순간을 만들어주는 서비스입니다.
+## :orange_book: 프로젝트 개요  
 
-<br>
+### 💡 합석렌티 소개  
+합석렌티는 축제를 더욱 생생하게 즐길 수 있도록 돕는 **축제 동행 매칭 플랫폼**입니다.
 
-<br>
+> 🎈 혼자 가기 망설여졌던 사람들  
+> 🤝 새로운 인연과의 만남  
+> 📸 추억을 기록하고 나누는 공간  
 
-## :four_leaf_clover: 팀원 구성
+---
+
+### 📌 기능 설명
+
+#### ✅ 실시간 채팅  
+현장 반응을 실시간으로 확인하고, 축제 공간에 있는 사람들과 채팅을 통해 즉각적으로 교류할 수 있습니다.
+
+#### ✅ 합석 기능  
+게시글을 작성해 동행자를 모집하거나, 관심사 기반의 그룹을 형성할 수 있어 새로운 만남의 장을 마련합니다.
+
+#### ✅ 사진 공유  
+즐거운 순간을 사진으로 남기고 다른 참가자들과 공유하며, 함께 만든 추억을 기록할 수 있습니다.
+
+> 합석렌티는 단순한 채팅 앱이 아닙니다.  
+> **사람과 사람을 이어주고, 낯선 축제를 특별한 경험으로 바꾸는 서비스**입니다.
+
+---
+
+## 🍀 팀원 구성  
 
 <div align="center">
 
-| **김윤정** |**이준수** | **홍지우** | **함형주** |
-| :------: | :------: | :------: | :------: |
-| [<img src="https://avatars.githubusercontent.com/u/200938223?v=4" height=150 width=150> <br/> @buskerberserker](https://github.com/buskerberserker) | [<img src="https://avatars.githubusercontent.com/u/200900857?v=4" height=150 width=150> <br/> @junsulee20](https://github.com/junsulee20) | [<img src="https://avatars.githubusercontent.com/u/200899792?v=4" height=150 width=150> <br/> @jeewoo0701](https://github.com/jeewoo0701) | [<img src="https://avatars.githubusercontent.com/u/108785508?v=4" height=150 width=150> <br/> @xzhhj01](https://github.com/xzhhj01)
-| FE/기획 |FE/기획|BE/FE| BE/FE | 
-| FE, UI/UX, 기획|FE, UI/UX, 기획|백엔드 세팅,FE| 프로젝트 세팅,관리 |
+| 김윤정<br/>[@buskerberserker](https://github.com/buskerberserker) | 이준수<br/>[@junsulee20](https://github.com/junsulee20) | 홍지우<br/>[@jeewoo0701](https://github.com/jeewoo0701) | 함형주<br/>[@xzhhj01](https://github.com/xzhhj01) |
+|:--:|:--:|:--:|:--:|
+| <img src="https://avatars.githubusercontent.com/u/200938223?v=4" width="120"/> | <img src="https://avatars.githubusercontent.com/u/200900857?v=4" width="120"/> | <img src="https://avatars.githubusercontent.com/u/200899792?v=4" width="120"/> | <img src="https://avatars.githubusercontent.com/u/108785508?v=4" width="120"/> |
+| FE / 기획 | FE / 기획 | BE / FE | BE / FE |
+| FE, UI/UX, 기획 | FE, UI/UX, 기획 | 백엔드 세팅, FE | 프로젝트 세팅, 관리 |
+
 </div>
 
-<br>
-<br>
-<br>
+---
 
-### 1. 합석
-<img src="./src/assets/readme2.png" width="250">
+## 🧩 기능 소개  
 
-### 2. 실시간 채팅
-<img src="./src/assets/readme3.png" width="250">
+### 🪑 1. 합석 기능
+<p align="center">
+  <img src="./src/assets/readme2.png" width="250">
+</p>
 
-### 3. 갤러리
-<img src="./src/assets/readme4.png" width="250">
-<br>
+### 💬 2. 실시간 채팅
+<p align="center">
+  <img src="./src/assets/readme3.png" width="250">
+</p>
 
-
+### 🖼️ 3. 갤러리 (사진 공유)
+<p align="center">
+  <img src="./src/assets/readme4.png" width="250">
+</p>
 
 ---
+
