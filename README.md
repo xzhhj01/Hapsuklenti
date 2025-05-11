@@ -1,7 +1,7 @@
 # 합석렌티
 합석렌티의 레포지토리입니다.
 <br>
-<img src="https://github.com/user-attachments/assets/readme1" width="500">
+<img src="./src/assets/readme1.png" width="500">
 <br>
 
 
@@ -59,9 +59,9 @@
 <br>
 
 ### 모임 결산
-<img src="https://github.com/user-attachments/assets/readme2" width="250">
-<img src="https://github.com/user-attachments/assets/readme3" width="250">
-<img src="https://github.com/user-attachments/assets/readme4" width="250">
+<img src="./src/assets/readme2.png" width="250">
+<img src="./src/assets/readme3.png" width="250">
+<img src="./src/assets/readme4.png" width="250">
 <br>
 
 
