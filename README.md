@@ -50,17 +50,21 @@
 | **김윤정** |**이준수** | **홍지우** | **함형주** |
 | :------: | :------: | :------: | :------: |
 | [<img src="https://avatars.githubusercontent.com/u/200938223?v=4" height=150 width=150> <br/> @buskerberserker](https://github.com/buskerberserker) | [<img src="https://avatars.githubusercontent.com/u/200900857?v=4" height=150 width=150> <br/> @junsulee20](https://github.com/junsulee20) | [<img src="https://avatars.githubusercontent.com/u/200899792?v=4" height=150 width=150> <br/> @jeewoo0701](https://github.com/jeewoo0701) | [<img src="https://avatars.githubusercontent.com/u/108785508?v=4" height=150 width=150> <br/> @xzhhj01](https://github.com/xzhhj01)
-| BE / FE |FE 리더|BE 리더|**팀장**|BE / FE |BE | 
-| ERD, API 명세 <br>네이버 검색 연동|UI/UX, 기획|ERD, API 명세 <br>CI/CD, Cloud/Infra|CI/CD<br> AI 엔지니어링<br>네이버 지도 연동<br> MockAccount Server |ERD, API 명세 <br>UI/UX, STT <br> Mobile|ERD, API 명세 <br> BE 프로젝트 세팅 <br> Infra|
+| FE/기획 |FE/기획|BE/FE| BE/FE | 
+| FE, UI/UX, 기획|FE, UI/UX, 기획|백엔드 세팅,FE| 프로젝트 세팅,관리 |
 </div>
 
 <br>
 <br>
 <br>
 
-### 모임 결산
+### 1. 합석
 <img src="./src/assets/readme2.png" width="250">
+
+### 2. 실시간 채팅
 <img src="./src/assets/readme3.png" width="250">
+
+### 3. 갤러리
 <img src="./src/assets/readme4.png" width="250">
 <br>
 
