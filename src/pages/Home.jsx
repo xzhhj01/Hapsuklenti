@@ -60,7 +60,7 @@ function Home() {
       </div>
 
       {/* 🔵 푸터 */}
-      <div className="copyright">copyright 2025 NEXT</div>
+      <div className="copyright">copyright 2025 Hapseok Solutions</div>
     </div>
   );
 }
