@@ -2,8 +2,9 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
-import { addDoc, collection, query, orderBy, limit, getDocs } from "firebase/firestore";
+import { addDoc, collection, query, orderBy, limit, getDocs, where, deleteDoc, doc } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, signInAnonymously, onAuthStateChanged } from "firebase/auth";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -22,6 +23,10 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+// Initialize Auth
+export const auth = getAuth(app);
+export const googleProvider = new GoogleAuthProvider();
 
 // Analytics may not work in development environment
 let analytics;
@@ -95,11 +100,15 @@ export const addPhoto = async (file, tags) => {
     const base64Image = await toBase64(file);
     console.log("Base64 변환 완료");
     
+    // 현재 시간으로부터 10분 후의 만료 시간 계산
+    const expiresAt = new Date(Date.now() + 10 * 60 * 1000); // 10분
+    
     // Firestore에 직접 Base64 이미지 저장
     console.log("Firestore에 저장 중...");
     const docRef = await addDoc(collection(db, "photo"), {
       imageData: base64Image,  // 이미지를 Base64로 저장
       uploadedAt: new Date(),
+      expiresAt: expiresAt,    // 만료 시간 추가
       tag1: tags.tag1 || "",
       tag2: tags.tag2 || "",
       tag3: tags.tag3 || ""
@@ -116,23 +125,112 @@ export const addPhoto = async (file, tags) => {
   }
 };
 
-// 모든 사진 가져오기 (최신순)
+// 만료된 사진 삭제 함수
+export const deleteExpiredPhotos = async () => {
+  try {
+    const now = new Date();
+    const photosRef = collection(db, "photo");
+    const q = query(
+      photosRef,
+      where("expiresAt", "<=", now)
+    );
+    const querySnapshot = await getDocs(q);
+    
+    const deletePromises = querySnapshot.docs.map(doc => deleteDoc(doc.ref));
+    await Promise.all(deletePromises);
+    
+    console.log(`${deletePromises.length}개의 만료된 사진이 삭제되었습니다.`);
+  } catch (error) {
+    console.error("만료된 사진 삭제 중 오류 발생:", error);
+  }
+};
+
+// 모든 사진 가져오기 (최신순, 만료되지 않은 것만)
 export const getAllPhotos = async (limitCount = 20) => {
   try {
+    // 먼저 만료된 사진 삭제
+    await deleteExpiredPhotos();
+    
     const photosRef = collection(db, "photo");
-    const q = query(photosRef, orderBy("uploadedAt", "desc"), limit(limitCount));
+    const now = new Date();
+    const q = query(
+      photosRef,
+      where("expiresAt", ">", now),  // 만료되지 않은 사진만
+      orderBy("expiresAt", "desc"),
+      limit(limitCount)
+    );
     const querySnapshot = await getDocs(q);
     
     return querySnapshot.docs.map(doc => {
       const data = doc.data();
       return {
         id: doc.id,
-        imageUrl: data.imageData, // Base64 데이터를 imageUrl로 매핑
-        ...data
+        imageUrl: data.imageData,
+        tag1: data.tag1,
+        tag2: data.tag2,
+        tag3: data.tag3,
+        uploadedAt: data.uploadedAt,
+        expiresAt: data.expiresAt
       };
     });
   } catch (error) {
     console.error("사진 목록 가져오기 중 오류 발생:", error);
-    return [];
+    throw error;
   }
+};
+
+// Authentication functions
+export const signInWithGoogle = async () => {
+  try {
+    const result = await signInWithPopup(auth, googleProvider);
+    return result.user;
+  } catch (error) {
+    console.error("Google 로그인 중 오류 발생:", error);
+    throw error;
+  }
+};
+
+export const signInWithEmail = async (email, password) => {
+  try {
+    const result = await signInWithEmailAndPassword(auth, email, password);
+    return result.user;
+  } catch (error) {
+    console.error("이메일 로그인 중 오류 발생:", error);
+    throw error;
+  }
+};
+
+export const signUpWithEmail = async (email, password) => {
+  try {
+    const result = await createUserWithEmailAndPassword(auth, email, password);
+    return result.user;
+  } catch (error) {
+    console.error("회원가입 중 오류 발생:", error);
+    throw error;
+  }
+};
+
+export const logout = async () => {
+  try {
+    await signOut(auth);
+  } catch (error) {
+    console.error("로그아웃 중 오류 발생:", error);
+    throw error;
+  }
+};
+
+// Authentication functions
+export const signInAnonymouslyUser = async () => {
+  try {
+    const result = await signInAnonymously(auth);
+    return result.user;
+  } catch (error) {
+    console.error("익명 로그인 중 오류 발생:", error);
+    throw error;
+  }
+};
+
+// Auth state observer
+export const onAuthStateChange = (callback) => {
+  return onAuthStateChanged(auth, callback);
 };

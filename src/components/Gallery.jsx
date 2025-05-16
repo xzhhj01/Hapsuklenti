@@ -1,4 +1,4 @@
-import React, { useState, useEffect, forwardRef, useImperativeHandle } from "react";
+import React, { useState, useEffect, forwardRef, useImperativeHandle, useMemo } from "react";
 import { getAllPhotos } from "../lib/firebase";
 import "./Gallery.css";
 
@@ -7,6 +7,7 @@ const Gallery = forwardRef((props, ref) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [modalPhoto, setModalPhoto] = useState(null); // 모달 상태
+  const [currentTime, setCurrentTime] = useState(new Date());
 
   // 외부에서 접근 가능한 함수 정의
   useImperativeHandle(ref, () => ({
@@ -15,6 +16,15 @@ const Gallery = forwardRef((props, ref) => {
 
   useEffect(() => {
     fetchPhotos();
+    // 1분마다 갤러리 새로고침
+    const refreshInterval = setInterval(fetchPhotos, 60000);
+    // 5초마다 현재 시간 업데이트 (1초에서 5초로 변경)
+    const timeInterval = setInterval(() => setCurrentTime(new Date()), 5000);
+    
+    return () => {
+      clearInterval(refreshInterval);
+      clearInterval(timeInterval);
+    };
   }, []);
 
   const fetchPhotos = async () => {
@@ -36,6 +46,22 @@ const Gallery = forwardRef((props, ref) => {
   const handleRefresh = () => {
     fetchPhotos();
   };
+
+  // 남은 시간 계산 함수를 useMemo로 최적화
+  const getRemainingTime = useMemo(() => {
+    return (expiresAt) => {
+      if (!expiresAt) return "시간 정보 없음";
+      
+      const expires = expiresAt.toDate ? expiresAt.toDate() : new Date(expiresAt.seconds * 1000);
+      const diff = expires - currentTime;
+      
+      if (diff <= 0) return "만료됨";
+      
+      const minutes = Math.floor(diff / 60000);
+      const seconds = Math.floor((diff % 60000) / 1000);
+      return `${minutes}분 ${seconds}초 남음`;
+    };
+  }, [currentTime]);
 
   // 모달 닫기
   const closeModal = () => setModalPhoto(null);
@@ -66,11 +92,7 @@ const Gallery = forwardRef((props, ref) => {
                 {photo.tag3 && <span className="tag">{photo.tag3}</span>}
               </div>
               <div className="photo-date">
-                {photo.uploadedAt?.toDate 
-                  ? photo.uploadedAt.toDate().toLocaleString() 
-                  : photo.uploadedAt?.seconds 
-                    ? new Date(photo.uploadedAt.seconds * 1000).toLocaleString()
-                    : "날짜 정보 없음"}
+                {getRemainingTime(photo.expiresAt)}
               </div>
             </div>
           ))}
@@ -87,6 +109,9 @@ const Gallery = forwardRef((props, ref) => {
               {modalPhoto.tag1 && <span className="tag">{modalPhoto.tag1}</span>}
               {modalPhoto.tag2 && <span className="tag">{modalPhoto.tag2}</span>}
               {modalPhoto.tag3 && <span className="tag">{modalPhoto.tag3}</span>}
+            </div>
+            <div className="photo-modal-time">
+              {getRemainingTime(modalPhoto.expiresAt)}
             </div>
           </div>
         </div>

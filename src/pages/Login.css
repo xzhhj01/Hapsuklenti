@@ -1,0 +1,127 @@
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f7f8fa;
+  padding: 20px;
+}
+
+.login-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-container h1 {
+  margin-bottom: 1rem;
+  color: #333;
+  font-size: 2rem;
+}
+
+.welcome-text {
+  color: #666;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.start-button {
+  width: 100%;
+  padding: 14px;
+  background: #4f8cff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.start-button:hover {
+  background: #2563eb;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #4f8cff;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 12px;
+  background: #4f8cff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-bottom: 1rem;
+}
+
+.submit-button:hover {
+  background: #2563eb;
+}
+
+.google-button {
+  width: 100%;
+  padding: 12px;
+  background: white;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.google-button:hover {
+  background: #f5f5f5;
+}
+
+.toggle-button {
+  width: 100%;
+  padding: 8px;
+  background: none;
+  border: none;
+  color: #4f8cff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.toggle-button:hover {
+  color: #2563eb;
+}
+
+.error-message {
+  background: #fee2e2;
+  color: #dc2626;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+} 

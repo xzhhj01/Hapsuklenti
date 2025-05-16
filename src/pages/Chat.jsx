@@ -19,7 +19,7 @@ function Chat() {
 
   // 메시지 실시간 구독
   useEffect(() => {
-    const q = query(collection(db, "messages"), orderBy("createdAt"));
+    const q = query(collection(db, "message"), orderBy("createdAt"));
     const unsubscribe = onSnapshot(q, (snapshot) => {
       setMessages(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
     });
@@ -30,7 +30,7 @@ function Chat() {
   const sendMessage = async (e) => {
     e.preventDefault();
     if (input.trim() === "") return;
-    await addDoc(collection(db, "messages"), {
+    await addDoc(collection(db, "message"), {
       text: input,
       userId,
       createdAt: serverTimestamp(),
